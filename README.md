@@ -1,6 +1,6 @@
 # QBiT and Hexarotor Sizing Optimization
 
-An [OpenMDAO](https://openmdao.org/) model for conceptual sizing of package-delivery UAVs. It optimizes minimum take-off mass (MTOM) for a required payload, mission range, and customer count.
+An [OpenMDAO](https://openmdao.org/)-based [multidisciplinary design optimization (MDO)](#ref-2) model for conceptual sizing of package-delivery UAVs [1]. It optimizes minimum take-off mass (MTOM) for a required payload, mission range, and customer count.
 
 The repository contains two vehicle architectures:
 
@@ -9,7 +9,7 @@ The repository contains two vehicle architectures:
 
 ![Hexarotor and QBiT configurations](xdsm/uavs_visual.png)
 
-*Figure 1. Hexarotor and QBiT concepts, adapted from Govindarajan and Sridharan [2].*
+*Figure 1. Hexarotor and QBiT concepts, adapted from Govindarajan and Sridharan [5].*
 
 ## Model overview
 
@@ -25,7 +25,7 @@ The QBiT model additionally applies a cruise lift-coefficient constraint.
 
 ## XDSM diagrams
 
-The Extended Design Structure Matrices (XDSMs) show the data flow between the optimizer, component models, weight balance, and constraints. The red weight-balance block returns the mass residual to the optimizer, which enforces it as an equality constraint.
+The Extended Design Structure Matrix (XDSM) [3] shows the data flow between the optimizer, component models, weight balance, and constraints. The red weight-balance block returns the mass residual to the optimizer, which enforces it as an equality constraint.
 
 ### QBiT
 
@@ -87,6 +87,12 @@ requirements.txt              # Python dependencies
 
 ## References
 
-<a id="ref-1"></a>[1] Kaneko, S., and Martins, J. R. R. A., 2023. *Fleet Design Optimization of Package Delivery Unmanned Aerial Vehicles Considering Operations*. Journal of Aircraft, 60, 1061-1077. [https://doi.org/10.2514/1.C036921](https://doi.org/10.2514/1.C036921)
+<a id="ref-1"></a>[1] Gray, J. S., Hwang, J. T., Martins, J. R. R. A., Moore, K. T., and Naylor, B. A., 2019. *OpenMDAO: An Open-Source Framework for Multidisciplinary Design, Analysis, and Optimization*. Structural and Multidisciplinary Optimization, 59, 1075-1104. [https://doi.org/10.1007/s00158-019-02211-z](https://doi.org/10.1007/s00158-019-02211-z)
 
-<a id="ref-2"></a>[2] Govindarajan, B., and Sridharan, A., 2020. *Conceptual Sizing of Vertical Lift Package Delivery Platforms*. Journal of Aircraft, 57, 1170-1188. [https://doi.org/10.2514/1.C035805](https://doi.org/10.2514/1.C035805)
+<a id="ref-2"></a>[2] Martins, J. R. R. A., and Lambe, A. B., 2013. *Multidisciplinary Design Optimization: A Survey of Architectures*. AIAA Journal, 51, 2049-2075. [https://doi.org/10.2514/1.J051895](https://doi.org/10.2514/1.J051895)
+
+<a id="ref-3"></a>[3] Lambe, A. B., and Martins, J. R. R. A., 2012. *Extensions to the Design Structure Matrix for the Description of Multidisciplinary Design, Analysis, and Optimization Processes*. Structural and Multidisciplinary Optimization, 46, 273-284. [https://doi.org/10.1007/s00158-012-0763-y](https://doi.org/10.1007/s00158-012-0763-y)
+
+<a id="ref-4"></a>[4] Kaneko, S., and Martins, J. R. R. A., 2023. *Fleet Design Optimization of Package Delivery Unmanned Aerial Vehicles Considering Operations*. Journal of Aircraft, 60, 1061-1077. [https://doi.org/10.2514/1.C036921](https://doi.org/10.2514/1.C036921)
+
+<a id="ref-5"></a>[5] Govindarajan, B., and Sridharan, A., 2020. *Conceptual Sizing of Vertical Lift Package Delivery Platforms*. Journal of Aircraft, 57, 1170-1188. [https://doi.org/10.2514/1.C035805](https://doi.org/10.2514/1.C035805)
