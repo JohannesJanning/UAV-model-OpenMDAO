@@ -7,7 +7,11 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import openmdao.api as om
+from matplotlib import rcParams
 from matplotlib.lines import Line2D
+
+rcParams['font.family'] = 'Times New Roman'
+rcParams['mathtext.fontset'] = 'stix'
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
@@ -112,7 +116,7 @@ def run_parameter_sweep():
         Line2D([0], [0], color=colors[i], lw=3, label=f'$n_c = {n_c}$')
         for i, n_c in enumerate(n_c_values)
     ]
-    ax.legend(handles=count_legend, loc='lower right', fontsize=12, ncol=2, frameon=True, title='Customer Count')
+    ax.legend(handles=count_legend, loc='lower right', fontsize=12, ncol=2, frameon=True, title='Mission Stops')
 
     fig.tight_layout()
     output_path = os.path.join(results_dir, 'mtom_sensitivity_payload_5kg.png')

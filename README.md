@@ -68,13 +68,13 @@ pdftoppm -png -r 200 -singlefile xdsm/hexarotor_xdsm.pdf xdsm/hexarotor_xdsm
 
 ## Sensitivity analysis
 
-The 5 kg payload sweep compares MTOM across total mission ranges from 10 to 60 km and one to five customers. Solid lines show QBiT and dashed lines show the hexarotor; the lower line is the lighter, favorable architecture.
+The 5 kg payload sweep compares MTOM across total mission ranges from 10 to 60 km and one to five mission stops. Solid lines show QBiT and dashed lines show the hexarotor; the lower line is the lighter, favorable architecture.
 
 <p align="center">
-	<img src="sizing_openmdao/sensitivity_analysis/results/mtom_sensitivity_payload_5kg.png" alt="MTOM sensitivity for a 5 kg payload" width="700">
+	<img src="sizing_openmdao/sensitivity_analysis/results/mtom_sensitivity_payload_5kg.png" alt="MTOM sensitivity for a 5 kg payload" width="600">
 </p>
 
-For one, two, and three customers, the QBiT becomes lighter at total ranges of about 44 km, 51 km, and 57 km, respectively. For four and five customers, the hexarotor remains lighter throughout the plotted range.
+For one, two, and three mission stops, the QBiT becomes lighter at total ranges of about 44 km, 51 km, and 57 km, respectively. For four and five mission stops, the hexarotor remains lighter throughout the plotted range.
 
 ## Repository structure
 
@@ -84,7 +84,7 @@ sizing_openmdao/
 	run_hexarotor.py            # Hexarotor optimization runner
 	qbit/                       # QBiT constants, components, groups, and model
 	hexarotor/                  # Hexarotor constants, components, groups, and model
-	sensitivity_analysis/       # Range and customer-count sensitivity studies
+	sensitivity_analysis/       # Range and mission-stop sensitivity studies
 xdsm/                         # XDSM generator and rendered diagrams
 requirements.txt              # Python dependencies
 ```
