@@ -1,6 +1,8 @@
 # QBiT and Hexarotor Sizing Optimization
 
-An [OpenMDAO](https://openmdao.org/)-based [multidisciplinary design optimization (MDO)](#ref-2) model for conceptual sizing of package-delivery UAVs [1]. It optimizes minimum take-off mass (MTOM) for a required payload, mission range, and customer count.
+Advanced Air Mobility (AAM) includes electric, often autonomous aircraft for applications such as package logistics, inspection, emergency response, and passenger transport. Vertical take-off and landing UAVs are especially useful where compact launch and recovery are needed.
+
+This repository is an [OpenMDAO](https://openmdao.org/)-based multidisciplinary design optimization (MDO) model for conceptual eVTOL UAV sizing [[1]](#ref-1) [[2]](#ref-2). It minimizes take-off mass (MTOM) for a chosen payload, total mission range, and number of mission stops. The sizing formulation follows Kaneko and Martins [[3]](#ref-3) and Govindarajan and Sridharan [[4]](#ref-4).
 
 The repository contains two vehicle architectures:
 
@@ -9,7 +11,7 @@ The repository contains two vehicle architectures:
 
 ![Hexarotor and QBiT configurations](xdsm/uavs_visual.png)
 
-*Figure 1. Hexarotor and QBiT concepts, adapted from Govindarajan and Sridharan [5].*
+*Figure 1. Hexarotor and QBiT concepts, adapted from Govindarajan and Sridharan [[4]](#ref-4).*
 
 ## Model overview
 
@@ -25,7 +27,7 @@ The QBiT model additionally applies a cruise lift-coefficient constraint.
 
 ## XDSM diagrams
 
-The Extended Design Structure Matrix (XDSM) [3] shows the data flow between the optimizer, component models, weight balance, and constraints. The red weight-balance block returns the mass residual to the optimizer, which enforces it as an equality constraint.
+The Extended Design Structure Matrix (XDSM) [[5]](#ref-5) shows the data flow between the optimizer, component models, weight balance, and constraints. The red weight-balance block returns the mass residual to the optimizer, which enforces it as an equality constraint.
 
 ### QBiT
 
@@ -68,7 +70,9 @@ pdftoppm -png -r 200 -singlefile xdsm/hexarotor_xdsm.pdf xdsm/hexarotor_xdsm
 
 The 5 kg payload sweep compares MTOM across total mission ranges from 10 to 60 km and one to five customers. Solid lines show QBiT and dashed lines show the hexarotor; the lower line is the lighter, favorable architecture.
 
-![MTOM sensitivity for a 5 kg payload](sizing_openmdao/sensitivity_analysis/results/mtom_sensitivity_payload_5kg.png)
+<p align="center">
+	<img src="sizing_openmdao/sensitivity_analysis/results/mtom_sensitivity_payload_5kg.png" alt="MTOM sensitivity for a 5 kg payload" width="700">
+</p>
 
 For one, two, and three customers, the QBiT becomes lighter at total ranges of about 44 km, 51 km, and 57 km, respectively. For four and five customers, the hexarotor remains lighter throughout the plotted range.
 
@@ -91,8 +95,8 @@ requirements.txt              # Python dependencies
 
 <a id="ref-2"></a>[2] Martins, J. R. R. A., and Lambe, A. B., 2013. *Multidisciplinary Design Optimization: A Survey of Architectures*. AIAA Journal, 51, 2049-2075. [https://doi.org/10.2514/1.J051895](https://doi.org/10.2514/1.J051895)
 
-<a id="ref-3"></a>[3] Lambe, A. B., and Martins, J. R. R. A., 2012. *Extensions to the Design Structure Matrix for the Description of Multidisciplinary Design, Analysis, and Optimization Processes*. Structural and Multidisciplinary Optimization, 46, 273-284. [https://doi.org/10.1007/s00158-012-0763-y](https://doi.org/10.1007/s00158-012-0763-y)
+<a id="ref-3"></a>[3] Kaneko, S., and Martins, J. R. R. A., 2023. *Fleet Design Optimization of Package Delivery Unmanned Aerial Vehicles Considering Operations*. Journal of Aircraft, 60, 1061-1077. [https://doi.org/10.2514/1.C036921](https://doi.org/10.2514/1.C036921)
 
-<a id="ref-4"></a>[4] Kaneko, S., and Martins, J. R. R. A., 2023. *Fleet Design Optimization of Package Delivery Unmanned Aerial Vehicles Considering Operations*. Journal of Aircraft, 60, 1061-1077. [https://doi.org/10.2514/1.C036921](https://doi.org/10.2514/1.C036921)
+<a id="ref-4"></a>[4] Govindarajan, B., and Sridharan, A., 2020. *Conceptual Sizing of Vertical Lift Package Delivery Platforms*. Journal of Aircraft, 57, 1170-1188. [https://doi.org/10.2514/1.C035805](https://doi.org/10.2514/1.C035805)
 
-<a id="ref-5"></a>[5] Govindarajan, B., and Sridharan, A., 2020. *Conceptual Sizing of Vertical Lift Package Delivery Platforms*. Journal of Aircraft, 57, 1170-1188. [https://doi.org/10.2514/1.C035805](https://doi.org/10.2514/1.C035805)
+<a id="ref-5"></a>[5] Lambe, A. B., and Martins, J. R. R. A., 2012. *Extensions to the Design Structure Matrix for the Description of Multidisciplinary Design, Analysis, and Optimization Processes*. Structural and Multidisciplinary Optimization, 46, 273-284. [https://doi.org/10.1007/s00158-012-0763-y](https://doi.org/10.1007/s00158-012-0763-y)
