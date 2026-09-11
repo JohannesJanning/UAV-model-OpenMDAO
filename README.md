@@ -2,14 +2,18 @@
 
 Advanced Air Mobility (AAM) includes electric, often autonomous aircraft for applications such as package logistics, inspection, emergency response, and passenger transport. Vertical take-off and landing UAVs are especially useful where compact launch and recovery are needed.
 
-This repository is an [OpenMDAO](https://openmdao.org/)-based multidisciplinary design optimization (MDO) model for conceptual eVTOL UAV sizing [[1]](#ref-1) [[2]](#ref-2). It minimizes take-off mass (MTOM) for a chosen payload, total mission range, and number of mission stops. The sizing formulation follows Kaneko and Martins [[3]](#ref-3) and Govindarajan and Sridharan [[4]](#ref-4).
+This repository is an [OpenMDAO](https://openmdao.org/)-based [[1]](#ref-1) implementation of multidisciplinary design optimization (MDO) [[2]](#ref-2) models for conceptual eVTOL UAV sizing. It minimizes take-off mass (MTOM) for a chosen payload, total mission range, and number of mission stops. The sizing formulation is reproduced from Kaneko and Martins [[3]](#ref-3) and Govindarajan and Sridharan [[4]](#ref-4).
+
+This implementation provides a computational foundation for further analysis, sensitivity studies, model extensions, and additional eVTOL design experiments.
 
 The repository contains two vehicle architectures:
 
 - **Hexarotor**: a six-rotor multirotor designed for efficient hover and short-range missions.
 - **QBiT**: a quadrotor biplane tail-sitter that uses wings in cruise and is suited to longer-range missions.
 
-![Hexarotor and QBiT configurations](xdsm/uavs_visual.png)
+<p align="center">
+	<img src="xdsm/uavs_visual.png" alt="Hexarotor and QBiT configurations" width="600">
+</p>
 
 *Figure 1. Hexarotor and QBiT concepts, adapted from Govindarajan and Sridharan [[4]](#ref-4).*
 
