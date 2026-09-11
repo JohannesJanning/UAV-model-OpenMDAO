@@ -1,12 +1,3 @@
-"""
-ConstraintsGroup - hexarotor constraint outputs.
-
-Hexarotor Table 1 constraints:
-  disk_loading  = (W_total / N_rotor) / (π·r²)  ≤ 250 N/m²
-  blade_loading = CT / σ                          ≤ 0.14
-
-No CL constraint — "CL ≤ 0.6 QBiT only" per Table 1.
-"""
 import openmdao.api as om
 from hexarotor.constants import N_ROTOR, SIGMA
 

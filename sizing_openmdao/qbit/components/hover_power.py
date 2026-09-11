@@ -1,25 +1,13 @@
-"""
-HoverPowerComp - Eq. (10) of Kaneko & Martins (2023).
-
-P_hover_per_rotor = (1/η) · T^1.5 / sqrt(2·ρ·A)
-P_hover_total     = N_rotor · P_hover_per_rotor
-where T = W_total / N_rotor  (hover trim condition)
-"""
 import numpy as np
 import openmdao.api as om
 from qbit.constants import RHO_AIR, ETA_HOVER, N_ROTOR, G
 
 
 class HoverPowerComp(om.ExplicitComponent):
-    """
-    Inputs:  W_total [N], r [m]
-    Output:  P_hover [W]   (total across all rotors)
-    """
-
     def setup(self):
-        self.add_input('W_total', val=60.0,  units='N',   desc='Total takeoff weight')
-        self.add_input('r',       val=0.22,  units='m',   desc='Rotor radius')
-        self.add_output('P_hover', val=600.0, units='W',  desc='Total hover shaft power')
+        self.add_input('W_total', val=60.0, units='N')
+        self.add_input('r', val=0.22, units='m')
+        self.add_output('P_hover', val=600.0, units='W')
 
     def setup_partials(self):
         self.declare_partials('P_hover', ['W_total', 'r'])
@@ -39,11 +27,9 @@ class HoverPowerComp(om.ExplicitComponent):
         A = np.pi * r ** 2
         denom = np.sqrt(2.0 * RHO_AIR * A)
 
-        # dP/dW: chain through T = W/N
         dP_dT = N_ROTOR * (1.0 / ETA_HOVER) * 1.5 * T ** 0.5 / denom
         partials['P_hover', 'W_total'] = dP_dT / N_ROTOR
 
-        # dP/dr: through A = π·r²
         dP_dA = N_ROTOR * (1.0 / ETA_HOVER) * T ** 1.5 * (-0.5) * (2.0 * RHO_AIR * A) ** (-1.5) * 2.0 * RHO_AIR
         dA_dr = 2.0 * np.pi * r
         partials['P_hover', 'r'] = dP_dA * dA_dr

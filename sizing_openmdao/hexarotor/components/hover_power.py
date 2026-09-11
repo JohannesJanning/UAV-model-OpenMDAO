@@ -1,27 +1,12 @@
-"""
-HoverPowerComp - Eq. (10), hexarotor variant.
-
-P_hover_per_rotor = (1/η) · T^1.5 / sqrt(2·ρ·A)
-P_hover_total     = N_rotor · P_hover_per_rotor
-T = W_total / N_rotor   (hover trim)
-
-η = 0.75 for hexarotor (vs 0.65 for QBiT).
-N_rotor = 6.
-"""
 import numpy as np
 import openmdao.api as om
 from hexarotor.constants import RHO_AIR, ETA_HOVER, N_ROTOR, G
 
 
 class HoverPowerComp(om.ExplicitComponent):
-    """
-    Inputs:  W_total [N], r [m]
-    Output:  P_hover [W]
-    """
-
     def setup(self):
-        self.add_input('W_total', val=50.0,  units='N')
-        self.add_input('r',       val=0.25,  units='m')
+        self.add_input('W_total', val=50.0, units='N')
+        self.add_input('r', val=0.25, units='m')
         self.add_output('P_hover', val=400.0, units='W')
 
     def setup_partials(self):
