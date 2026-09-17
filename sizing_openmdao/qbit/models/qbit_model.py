@@ -11,7 +11,7 @@ def build_qbit_model(payload_kg: float,
 
     ivc = om.IndepVarComp()
     ivc.add_output('W_payload', val=payload_kg * 9.81, units='N')
-    ivc.add_output('R', val=2.0 * range_m, units='m')
+    ivc.add_output('R', val=range_m, units='m')
     ivc.add_output('n_c', val=float(n_c))
 
     ivc.add_output('V_inf', val=33.0, units='m/s')
